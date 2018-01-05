@@ -17,7 +17,11 @@ submitElem.addEventListener("click", compareAndDisplayOutcome);
 //   counts down the number of guesses remaining,
 //   and displays a message to the user accordingly:
 function compareAndDisplayOutcome() {
-
+    
+    // Every time the user submits a guess, count down the guesses remaining.
+    //    Remember: this is a shortcut for guessesRemaining = guessesRemaining - 1;
+    guessesRemaining--;
+    
     // If userInput matches correctAnswer:
     if (userInput === correctAnswer) {
 
@@ -29,13 +33,17 @@ function compareAndDisplayOutcome() {
     // Otherwise (if correctAnswer and userInput DON'T match),
     //   and if there are more than 0 guesses remaining:
     } else if (guessesRemaining > 0) {
+        
         outcomeElem.textContent = "Wrong, guess again! Guesses left: " + guessesRemaining;
-        guessesRemaining--;
 
     // Otherwise (only possibility left is that the user guessed incorrectly
     //   and there are NO guesses remaining):
     } else {
+        
         outcomeElem.textContent = "You lose!!! Refresh the page to play again.";
+        
+        // Stop responding to clicks on the button, since the game is over now!
+        submitElem.removeEventListener("click", compareAndDisplayOutcome);
     }
 
 }
