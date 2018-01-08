@@ -25,7 +25,7 @@ function compareAndDisplayOutcome() {
     // If userInput matches correctAnswer:
     if (userInput === correctAnswer) {
 
-        outcomeElem.textContent = "You win!!!";
+        outcomeElem.textContent = "You win!!! Refresh the page to play again.";
 
         // Stop responding to clicks on the button, since the game is over now!
         submitElem.removeEventListener("click", compareAndDisplayOutcome);
